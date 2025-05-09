@@ -1,3 +1,5 @@
+import { modal } from "../modal.js"
+
 function getPokemonLocal(){
     const pokemon = JSON.parse(localStorage.getItem("pokemon"))
     console.log(pokemon,"pokemon local")
@@ -31,5 +33,20 @@ function getAbilities(pokemon){
 }   
 async function addPokemon(pokemon){
     console.log(pokemon,"add")
+    const userId = localStorage.getItem("userId")
+    const obj = {
+        userId,
+        pokemon
+    }
+    const res = await fetch("http://localhost:3001/pokemon",{
+        method:"POST",
+        body: JSON.stringify(obj),
+        headers: {
+            "content-type": "application/json; charset=utf-8"
+        }
+    })
+    if(res.status===201){
+        modal("Pokemon adicionado com sucesso!")
+    }
 
 }
