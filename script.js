@@ -1,9 +1,6 @@
+import {colors} from "./colors.js"
 let offset = 0
-const colors = {
-    normal:"#7a7a7ac2",
-    poison:"#154225",
-    grass:"#1ceb64"
-}
+
 function montarHeader(){
     const header = document.querySelector("header")
     const user = localStorage.getItem("token")
